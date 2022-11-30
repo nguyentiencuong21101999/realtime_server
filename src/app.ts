@@ -3,21 +3,18 @@ import express, { NextFunction, Request, Response } from 'express'
 import helmet from 'helmet'
 import morgan from 'morgan'
 import { config } from './configs'
-import { database } from './database/connection'
 import { handleError } from './helpers/error'
 import { logger } from './helpers/logger'
 import { rootSocket } from './modules-socket/chat/chat.route.soket'
 import { serverAdapter } from './modules/queue/queue.service'
-import { redisService } from './modules/redis/redis.service'
 import { SocketService } from './modules/socket/socket.service'
-import { userRouter } from './modules/users/user.route'
 
 const app = express()
-const port = config.port
+const port = process.env.PORT || 4000
 
 const run = async () => {
-    await database.authenticate()
-    await redisService.connect()
+    // await database.authenticate()
+    // await redisService.connect()
 
     app.set('trust proxy', true)
     app.use(cors())
@@ -41,7 +38,7 @@ const run = async () => {
         res.send({ status: 'healthy' })
     })
 
-    app.use('/users', userRouter)
+    // app.use('/users', userRouter)
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     app.use((err: Error, req: Request, res: Response, next: NextFunction) => {

@@ -35,7 +35,7 @@ export interface Config {
     sendbirdAppId: string
     sendbirdApiKey: string
     basicAuthPassword: string
-    googleCaptchaSecretKey:string
+    googleCaptchaSecretKey: string
 }
 
 export const config: Config = {
@@ -73,7 +73,7 @@ export const config: Config = {
     sendbirdAppId: env.SENDBIRD_APP_ID,
     sendbirdApiKey: env.SENDBIRD_API_KEY,
     basicAuthPassword: env.BASIC_AUTH_PASSWORD,
-    googleCaptchaSecretKey:env.GOOGLE_CAPTCHA_SECRET_KEY
+    googleCaptchaSecretKey: env.GOOGLE_CAPTCHA_SECRET_KEY,
 }
 
 export const isProduction = env.NODE_ENV === 'production'

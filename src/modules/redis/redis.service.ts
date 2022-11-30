@@ -7,12 +7,18 @@ export class RedisService {
 
     constructor(conf: Config) {
         this.conf = conf
-        this.client = createClient({ url: this.conf.redisUri })
+        this.client = createClient({
+            url: 'redis://redis-14901.c74.us-east-1-4.ec2.cloud.redislabs.com:14901',
+        })
     }
 
     async connect() {
-        await this.client.connect()
-        logger.info('Redis connect successful!')
+        try {
+            await this.client.connect()
+            logger.info('Redis connect successful!')
+        } catch (error) {
+            console.log(error)
+        }
     }
 }
 

@@ -4,31 +4,30 @@ import fs from 'fs'
 import humps from 'humps'
 import path from 'path'
 import { QueryTypes, Transactionable } from 'sequelize'
-import { Sequelize } from 'sequelize-typescript'
-import { config, isProduction } from '../configs'
 import { logger } from '../helpers/logger'
 
 const MODULES_PATH = 'src/modules'
 const SPROC_PATH = 'sprocs'
 
-export const database = new Sequelize(config.dbUri, {
-    dialect: 'mysql',
-    benchmark: true,
-    logging: (msg, timing) => {
-        logger.info(`[${timing}ms]${msg.replace('Executed (default):', '')}`)
-    },
-    models: [
-        path.dirname(__dirname) +
-            '/modules/**/*.model' +
-            (isProduction ? '.js' : '.ts'),
-    ],
-    pool: {
-        max: 50,
-        min: 0,
-        idle: 10000,
-        acquire: 60000,
-    },
-})
+export const database = null
+// new Sequelize(config.dbUri, {
+//     dialect: 'mysql',
+//     benchmark: true,
+//     logging: (msg, timing) => {
+//         logger.info(`[${timing}ms]${msg.replace('Executed (default):', '')}`)
+//     },
+//     models: [
+//         path.dirname(__dirname) +
+//             '/modules/**/*.model' +
+//             (isProduction ? '.js' : '.ts'),
+//     ],
+//     pool: {
+//         max: 50,
+//         min: 0,
+//         idle: 10000,
+//         acquire: 60000,
+//     },
+// })
 
 export interface CustomQueryOptions extends Transactionable {
     replacements?: unknown[]
