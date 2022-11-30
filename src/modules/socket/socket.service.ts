@@ -1,4 +1,3 @@
-import express from 'express'
 import http from 'http'
 import socketIO from 'socket.io'
 import { Config } from '../../configs'
@@ -10,7 +9,7 @@ export class SocketService {
         this.conf = conf
         this.io = new socketIO.Server(server, {
             cors: {
-                origin: ['http://localhost:8080'],
+                origin: ['https://idol-lady.vercel.app'],
                 methods: ['GET', 'POST'],
                 credentials: true,
             },
