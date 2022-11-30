@@ -9,12 +9,10 @@ export class SocketService {
         this.conf = conf
         this.io = new socketIO.Server(server, {
             cors: {
-                origin: [
-                    'https://idol-lady.vercel.app',
-                    'http://localhost:3000',
-                ],
+                origin: ['hhttps://idol-lady.vercel.app'],
                 methods: ['GET', 'POST'],
                 credentials: true,
+                allowedHeaders: ['my-custom-header'],
             },
         })
     }
