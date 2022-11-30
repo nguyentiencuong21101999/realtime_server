@@ -7,7 +7,7 @@
         "node": "18.x"
     },
     "scripts": {
-        "build": "rimraf ./dist && tsc",
+        "build": "yarn build && node -r dotenv/config dist/app.js",
         "start": "node dist/app.js",
         "start:dev": "nodemon ./src/app.ts",
         "lint": "eslint . --ext .ts",
