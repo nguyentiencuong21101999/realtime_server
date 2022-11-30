@@ -29,8 +29,8 @@ const run = async () => {
     // )
 
     // app.use('/admin/queues', serverAdapter.getRouter())
-    app.get('/healthcheck', async (req, res) => {
-        res.send({ status: 'healthy' })
+    app.get('/', async (req, res) => {
+        res.send({ status: 'oke' })
     })
 
     // // app.use('/users', userRouter)
